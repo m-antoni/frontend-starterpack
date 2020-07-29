@@ -34,6 +34,14 @@ export const displayDate = () => {
   return dateToday;
 }
 
+
+const date = new Date();
+// days
+const days = [];
+for (let day = 1; day <= 31; day++) {
+  let dateFormat = { value: day, label: day, name: 'day'};
+  days.push(dateFormat);
+}
 // months
 export const numToMonth = (num) => {
     var months = [
@@ -41,17 +49,6 @@ export const numToMonth = (num) => {
     ];
     return months[num - 1];
 }
-
-
-const date = new Date();
-
-// days
-const days = [];
-for (let day = 1; day <= 31; day++) {
-  let dateFormat = { value: day, label: day, name: 'day'};
-  days.push(dateFormat);
-}
-
 // years
 const years = [];
 for (let year = 1905; year <= date.getFullYear(); year++) {

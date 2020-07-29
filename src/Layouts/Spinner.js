@@ -7,6 +7,7 @@ export const Spinner = ()=> {
 	)
 }
 
+// works only in bootsrap
 export const MiniSpinner = () => {
 	return (
 		<div className="text-center my-3">

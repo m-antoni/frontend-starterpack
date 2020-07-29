@@ -28,7 +28,7 @@ function App() {
                 <PublicRoute path="/register" exact component={Register}/>
 
                 <PrivateRoute path="/" exact component={Home} />
-
+                
                 <PublicRoute component={PageNotFound} />
               </Switch>
             </Fragment>
