@@ -1,21 +1,20 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import './Layouts/css/Global.css';
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor }  from './store';
 
 // Routes
-import PrivateRoute from './Utils/PrivateRoute';
-import PublicRoute from './Utils/PublicRoute';
+import PrivateRoute from './utils/PrivateRoute';
+import PublicRoute from './utils/PublicRoute';
 
 // Public Route
-import Login from './Components/Public/Login';
-import Register from './Components/Public/Register';
-import PageNotFound from './Components/Public/PageNotFound';
+import Login from './components/public/Login';
+import Register from './components/public/Register';
+import PageNotFound from './components/public/PageNotFound';
 
 // Private Route
-import Home from './Components/Private/Home';
+import Home from './components/private/Home';
 
 function App() {
   return (

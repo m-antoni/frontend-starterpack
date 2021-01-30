@@ -1,4 +1,4 @@
-import '../Layouts/css/iziToast.css';
+import "../components/layouts/styles/iziToast.css";
 import iziToast from "izitoast";
 
 export const ToastSuccess = message => 
@@ -10,10 +10,10 @@ export const ToastSuccess = message =>
         iconColor: "rgb(0, 255, 184)",
         theme: "dark",
         progressBarColor: "rgb(0, 255, 184)",
-        position: "bottomRight",
-        transitionIn: "bounceInLeft",
+        position: "topCenter",
+        transitionIn: "bounceInDown",
         transitionOut: "fadeOut",
-        timeout: 4000
+        timeout: 7000
     });
 }
 
@@ -26,8 +26,10 @@ export const ToastDanger = message =>
             iziToast.error({
                 title: "Error",
                 icon: "ico-error",
-                message: message[i],
                 position: "topCenter",
+                transitionIn: "bounceInDown",
+                message: message[i],
+                timeout: 7000
             });
         }
     }
@@ -38,6 +40,8 @@ export const ToastDanger = message =>
             icon: "ico-error",
             message: message,
             position: "topCenter",
+            transitionIn: "bounceInDown",
+            timeout: 7000
         });
     }
 }
@@ -47,13 +51,14 @@ export const ToastWarning = message =>
     iziToast.warning({
         title: "Warning",
         icon: "ico-warning",
-        message: message,
         position: "topCenter",
+        transitionIn: "bounceInDown",
+        message: message,
     });
 }
 
 
-export const ToastQuestion = callback => {
+export const ToastQuestion = (message, status ,callback) => {
 
     iziToast.show({
         timeout: 20000,
@@ -62,8 +67,8 @@ export const ToastQuestion = callback => {
         displayMode: 'once',
         id: 'question',
         zindex: 99999,
-        title: 'Approved',
-        message: 'Are you sure you want to approved this?',
+        title: 'Confirm',
+        message: message,
         position: 'center',
         iconColor: "rgb(0, 255, 184)",
         theme: "dark",
@@ -72,7 +77,7 @@ export const ToastQuestion = callback => {
             ['<button><b>YES</b></button>', function (instance, toast) {
         
                 // these line takes value and a callback function as arguments
-                callback();
+                callback(status);
 
                 instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
      
