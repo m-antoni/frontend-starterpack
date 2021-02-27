@@ -1,4 +1,4 @@
-import "../components/layouts/styles/iziToast.css";
+import '../components/layouts/css/iziToast.css';
 import iziToast from "izitoast";
 
 export const ToastSuccess = message => 

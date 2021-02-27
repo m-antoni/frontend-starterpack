@@ -1,19 +1,18 @@
 import axios from 'axios';
-import {auth} from './_user.service';
-import { Redirect } from 'react-router-dom';
-import { getToken } from '../Utils/Common';
-const API_ROOT = process.env.REACT_APP_API_LINK || 'inventorylumen.test/api';
+import { getToken } from '../helpers/globals';
+const API_ROOT = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const httpWithFile = axios.create ({
     baseURL: API_ROOT,
-    timeout: 60000,
+    timeout: 259200,
     responseType: 'blob', // important
 });
 
 httpWithFile.interceptors.request.use (
   function (config) {
     const token = getToken();
-    if (token) config.headers.Authorization = `Bearer ${token}`;
+    // if (token) config.headers.Authorization = `Bearer ${token}`;
+    if (token) config.headers.common['x-auth-token'] = token;
     return config;
   },
   function (error) {
@@ -35,8 +34,6 @@ httpWithFile.interceptors.response.use((response) => {
           };
 
           localStorage["appState"] = JSON.stringify(appState);
-          // alert('Authorization is invalid. Redirecting to login page.');
-          // window.location.reload();
       }
       return Promise.reject(error.response);
     }

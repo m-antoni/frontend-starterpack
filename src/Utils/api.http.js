@@ -1,17 +1,19 @@
 import axios from 'axios';
-import { getToken } from './Common';
-const API_ROOT = process.env.REACT_APP_API_LINK || 'inventorylumen.test/api';
+import { getToken } from '../helpers/globals';
+const API_ROOT = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const http = axios.create ({
   baseURL: API_ROOT,
-  timeout: 60000,
+  timeout: 259200,
   headers: {'Content-Type': 'application/json'},
 });
+
 
 http.interceptors.request.use (
   function (config) {
     const token = getToken();
-    if (token) config.headers.Authorization = `Bearer ${token}`;
+    // if (token) config.headers.Authorization = `Bearer ${token}`;
+    if (token) config.headers.common['x-auth-token'] = token;
     return config;
   },
   function (error) {

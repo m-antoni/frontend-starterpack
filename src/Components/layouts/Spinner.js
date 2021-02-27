@@ -7,11 +7,11 @@ export const Spinner = ()=> {
 	)
 }
 
-// works only in bootsrap
-export const MiniSpinner = () => {
+// Yout Custom Spinner
+export const CustomSpinner = () => {
 	return (
 		<div className="text-center my-3">
-			<div className="spinner-border text-primary" style={miniSpinnerStyle}></div>
+			<div className="spinner-border text-primary" style={customSpinnerStyle}></div>
 		</div>
 	)
 }
@@ -25,7 +25,7 @@ const spinnerStyle = {
 	display: 'block'
 }
 
-const miniSpinnerStyle = {
+const customSpinnerStyle = {
 	width: '5rem',
 	height: '5rem',
 	margin: 'auto',
